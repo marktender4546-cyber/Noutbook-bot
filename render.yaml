@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: noutbook-telegram-shop
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: SHOP_NAME
+        value: NoutBook
+      - key: WEB_CONCURRENCY
+        value: "1"
